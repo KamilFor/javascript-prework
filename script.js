@@ -8,9 +8,25 @@ function clearMessages() {
   document.getElementById("messages").innerHTML = "";
 }
 
-let computerMove = `kamień`;
-let playerMove = "papier";
+let computerMove = Math.floor(Math.random() * 3 + 1);
+let playerMove = prompt("Wybierz swój ruch! 1: kamień, 2: papier, 3: nożyce.");
 
-printMessage("Zagrałem " + computerMove + "! Jeśli Twój ruch to papier, to wygrywasz!");
+console.log("Wylosowana liczba to: " + computerMove);
+console.log("Gracz wpisał: " + playerMove);
 
-printMessage("Zagrałem " + playerMove + "! Jeśli Twój ruch to papier, to wygrywasz!");
+if (computerMove == 1) {
+  computerMove = "kamień";
+} else if (computerMove == 2) {
+  computerMove = "papier";
+} else if (computerMove == 3) {
+  computerMove = "nożyczki";
+}
+if (playerMove == 1) {
+  playerMove = "kamień";
+} else if (playerMove == 2) {
+  playerMove = "papier";
+} else if (playerMove == 3) {
+  playerMove = "nożyczki";
+}
+printMessage("Mój ruch to: " + computerMove);
+printMessage("Twój ruch to: " + playerMove);
