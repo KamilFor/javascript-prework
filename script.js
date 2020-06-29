@@ -14,40 +14,45 @@ let wining;
 console.log("Wylosowana liczba to: " + computerMove);
 console.log("Gracz wpisał: " + playerMove);
 
-if (computerMove == playerMove) {
-  winning = "remis";
-} else if (computerMove == 1 && computerMove < playerMove) {
-  wining = "przegrywasz";
-  if (playerMove == 3) {
-    wining = "wygrywasz";
+function displayResult(computerMove, playerMove, wining) {
+  if (computerMove == playerMove) {
+    wining = "remis";
+  } else if (computerMove == 1) {
+    if (computerMove < playerMove) {
+      wining = "przegrywasz";
+    }
+    if (playerMove == 3) {
+      wining = "wygrywasz";
+    }
+  } else if (computerMove == 2) {
+    if (computerMove < playerMove) {
+      wining = "przegrywasz";
+    }
+    if (playerMove == 1) {
+      wining = "wygrywasz";
+    }
+  } else if (computerMove == 3) {
+    if (computerMove > playerMove) {
+      wining = "przegrywasz";
+    }
+    if (playerMove == 2) {
+      wining = "wygrywasz";
+    }
   }
-} else if (computerMove == 2 && computerMove < playerMove) {
-  wining = "przegrywasz";
-  if (playerMove == 1) {
-    wining = "wygrywasz";
-  }
-} else if (computerMove == 3 && computerMove > playerMove) {
-  wining = "przegrywasz";
-  if (playerMove == 1) {
-    wining = "wygrywasz";
+  return wining;
+}
+function getMoveName(name) {
+  if (name == 1) {
+    name = "kamień";
+    return name;
+  } else if (name == 2) {
+    name = "papier";
+    return name;
+  } else if (name == 3) {
+    name = "nożyczki";
+    return name;
   }
 }
-
-if (computerMove == 1) {
-  computerMove = "kamień";
-} else if (computerMove == 2) {
-  computerMove = "papier";
-} else if (computerMove == 3) {
-  computerMove = "nożyczki";
-}
-if (playerMove == 1) {
-  playerMove = "kamień";
-} else if (playerMove == 2) {
-  playerMove = "papier";
-} else if (playerMove == 3) {
-  playerMove = "nożyczki";
-}
-
-printMessage("Mój ruch to: " + computerMove);
-printMessage("Twój ruch to: " + playerMove);
-printMessage("Twój ruch to: " + wining);
+printMessage("Mój ruch to: " + getMoveName(computerMove));
+printMessage("Twój ruch to: " + getMoveName(playerMove));
+printMessage("Twój ruch to: " + displayResult(computerMove, playerMove, wining));
